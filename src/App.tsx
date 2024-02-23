@@ -51,7 +51,7 @@ function App() {
             <BarChart />
           </div>
         </WidgetWrapper>
-        <WidgetWrapper >
+        <WidgetWrapper>
           <h1 className="w-[380px]">Minha Carteira</h1>
         </WidgetWrapper>
       </div>

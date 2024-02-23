@@ -1,69 +1,32 @@
 import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
-import { useMediaQuery } from "react-responsive";
 
 export default function BarChart() {
-  const isMobile = useMediaQuery({ maxWidth: 500 });
-  const isTablet = useMediaQuery({ minWidth: 501, maxWidth: 1200 });
-  const [breakPoint, setBreakPoint] = useState(1000);
-  const [wd, setWd] = useState(100);
-
-  useEffect(() => {
-    if (isMobile) {
-      setBreakPoint(500);
-      setWd(200);
-    } else if (isTablet) {
-      setBreakPoint(1200);
-      setWd(300);
-    }
-  }, [isMobile, isTablet]);
-
   const [state] = useState({
     series: [
       {
         name: "Patrimonio Acumulado",
         data: [
-          600, 1206, 1812, 2451, 3025, 3569, 4026, 4567, 5113, 5663, 6225, 6789,
+          600.12, 1220, 1828, 2432, 3041, 3647, 4258, 4865, 5468, 6077, 6682,
+          7283, 7891, 8495, 9103, 9710, 10318, 10837, 11356, 11882, 12411,
+          12941, 13469, 14000, 14528, 15057, 15587, 16116, 16646, 17175, 17705,
+          18324, 18943.12,
         ],
       },
     ],
+    tooltip: {
+      formatter: function (value: number) {
+        return `R$ ${value.toFixed(2)}`;
+      },
+    },
     options: {
       chart: {
-        height: 350,
         type: "bar",
-        stacked: true,
-        toolbar: {
-          show: true,
-          offsetX: 0,
-          offsetY: -30,
-          tools: {
-            download: false,
-            selection: false,
-            zoom: false,
-            zoomin: true,
-            zoomout: true,
-            pan: true,
-            reset: true,
-            customIcons: []
-          },
-          export: {
-            csv: {
-              filename: undefined,
-              columnDelimiter: ',',
-              headerCategory: 'category',
-              headerValue: 'value',
-              dateFormatter(timestamp) {
-                return new Date(timestamp).toDateString()
-              }
-            },
-            svg: {
-              filename: undefined,
-            },
-            png: {
-              filename: undefined,
-            }
-          },
-          autoSelected: 'zoom' 
+      },
+      tooltip: {
+        enabled: true,
+        x: {
+          show: false,
         },
       },
       theme: {
@@ -90,64 +53,67 @@ export default function BarChart() {
       },
       plotOptions: {
         bar: {
-          borderRadius: 3,
-          dataLabels: {
-            position: "top", // top, center, bottom
-          },
+          columnWidth: "80%",
+          borderRadius: "3",
         },
       },
-      
-
-      xaxis: {
-        categories: [
-          "Jan",
-          "Fev",
-          "Mar",
-          "Abr",
-          "Mai",
-          "Jun",
-          "Jul",
-          "Ago",
-          "Set",
-          "Out",
-          "Nov",
-          "Dez",
-        ],
-        position: "top",
-        axisBorder: {
+      dataLabels: {
+        enabled: false,
+      },
+      yaxis: {
+        labels: {
           show: false,
-        },
-        axisTicks: {
-          show: false,
-        },
-        crosshairs: {
-          fill: {
-            type: "gradient",
-            gradient: {
-              colorFrom: "#D8E3F0",
-              colorTo: "#BED1E6",
-              stops: [0, 100],
-              opacityFrom: 100,
-              opacityTo: 100,
-            },
+          formatter: function (y: number) {
+            return ` R$${y
+              .toFixed(2)
+              .replace(/\./g, ",")
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
           },
         },
         tooltip: {
           enabled: true,
+          offsetX: -50,
         },
       },
-      yaxis: {
-        axisBorder: {
-          show: false,
-        },
-        axisTicks: {
-          show: false,
-        },
+      xaxis: {
+        type: "datetime",
+        categories: [
+          "2011-01-01",
+          "2011-02-01",
+          "2011-03-01",
+          "2011-04-01",
+          "2011-05-01",
+          "2011-06-01",
+          "2011-07-01",
+          "2011-08-01",
+          "2011-09-01",
+          "2011-10-01",
+          "2011-11-01",
+          "2011-12-01",
+          "2012-01-01",
+          "2012-02-01",
+          "2012-03-01",
+          "2012-04-01",
+          "2012-05-01",
+          "2012-06-01",
+          "2012-07-01",
+          "2012-08-01",
+          "2012-09-01",
+          "2012-10-01",
+          "2012-11-01",
+          "2012-12-01",
+          "2013-01-01",
+          "2013-02-01",
+          "2013-03-01",
+          "2013-04-01",
+          "2013-05-01",
+          "2013-06-01",
+          "2013-07-01",
+          "2013-08-01",
+          "2013-09-01",
+        ],
         labels: {
-          show: false,
-          formatter: function (val: number) {
-            return "R$ " + val;
-          },
+          rotate: -90,
         },
       },
     },
@@ -159,7 +125,7 @@ export default function BarChart() {
         series={state.series}
         type="bar"
         height={365}
-        width={764}
+        width={778}
       />
     </div>
   );

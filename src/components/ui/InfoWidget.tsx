@@ -32,7 +32,7 @@ function InfoWidget({ name, value, percentage, hidden, sm, color }: Props) {
           </>
         ) : (
           <>
-            <p className="text-xl w-40 font-bold text-center">
+            <p className="text-xl w-40 font-bold">
               R$ {hiddenValue}
             </p>
             <PercentageValue percentageValue={percentage} />
