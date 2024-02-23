@@ -126,6 +126,7 @@ export default function BarChart() {
         type="bar"
         height={365}
         width={778}
+        
       />
     </div>
   );
