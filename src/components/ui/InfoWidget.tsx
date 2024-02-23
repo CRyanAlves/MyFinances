@@ -13,15 +13,13 @@ function InfoWidget({ name, value, percentage, hidden, sm, color }: Props) {
   const formattedValue = value;
 
   function hidesValue(formattedValue: string): string {
-    return formattedValue.replace(/\d/g, "*");
+    return formattedValue.replace(/([^R\$])/g, "*");
   }
 
   const hiddenValue = hidesValue(formattedValue);
   return (
     <div className={`flex flex-col ${sm ? "gap-0" : "gap-[15px] py-3"}`}>
-      <h2 className={`${sm ? "text-sm " : "text-base"} py-[6px]`}>
-        {name}
-      </h2>
+      <h2 className={`${sm ? "text-sm " : "text-base"} py-[6px]`}>{name}</h2>
       <span className="flex flex-row items-center justify-center">
         {!hidden ? (
           <>
@@ -32,9 +30,7 @@ function InfoWidget({ name, value, percentage, hidden, sm, color }: Props) {
           </>
         ) : (
           <>
-            <p className="text-xl w-40 font-bold">
-              R$ {hiddenValue}
-            </p>
+            <p className="text-xl w-40 font-bold">R$ {hiddenValue}</p>
             <PercentageValue percentageValue={percentage} />
           </>
         )}

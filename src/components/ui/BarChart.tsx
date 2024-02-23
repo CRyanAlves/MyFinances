@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
 export default function BarChart() {
@@ -19,10 +19,23 @@ export default function BarChart() {
         return `R$ ${value.toFixed(2)}`;
       },
     },
-    options: {
-      chart: {
-        type: "bar",
+    responsive: [
+      {
+        breakpoint: 1000,
+        options: {
+          plotOptions: {
+            bar: {
+              horizontal: true,
+            },
+          },
+          legend: {
+            position: "bottom",
+          },
+        },
       },
+    ],
+
+    options: {
       tooltip: {
         enabled: true,
         x: {
@@ -33,7 +46,6 @@ export default function BarChart() {
         monochrome: {
           enabled: true,
           color: "#1ba8bd",
-          shadeTo: "dark",
           shadeIntensity: 0.75,
         },
       },
@@ -54,7 +66,7 @@ export default function BarChart() {
       plotOptions: {
         bar: {
           columnWidth: "80%",
-          borderRadius: "3",
+          borderRadius: 3,
         },
       },
       dataLabels: {
@@ -119,14 +131,13 @@ export default function BarChart() {
     },
   });
   return (
-    <div>
+    <div >
       <ReactApexChart
         options={state.options}
         series={state.series}
         type="bar"
         height={365}
         width={778}
-        
       />
     </div>
   );
