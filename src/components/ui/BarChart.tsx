@@ -9,8 +9,7 @@ export default function BarChart() {
         data: [
           600.12, 1220, 1828, 2432, 3041, 3647, 4258, 4865, 5468, 6077, 6682,
           7283, 7891, 8495, 9103, 9710, 10318, 10837, 11356, 11882, 12411,
-          12941, 13469, 14000, 14528, 15057, 15587, 16116, 16646, 17175, 17705,
-          18324, 18943.12,
+          12941,
         ],
       },
     ],
@@ -19,22 +18,6 @@ export default function BarChart() {
         return `R$ ${value.toFixed(2)}`;
       },
     },
-    responsive: [
-      {
-        breakpoint: 1000,
-        options: {
-          plotOptions: {
-            bar: {
-              horizontal: true,
-            },
-          },
-          legend: {
-            position: "bottom",
-          },
-        },
-      },
-    ],
-
     options: {
       tooltip: {
         enabled: true,
@@ -62,6 +45,20 @@ export default function BarChart() {
           stops: [0, 100, 100],
           colorStops: [],
         },
+      },
+      chart: {
+        toolbar: {
+          show: false,
+          tools: {
+            download: false,
+            selection: false,
+            zoom: true,
+            zoomin: false,
+            zoomout: false,
+            pan: true,
+          },
+        },
+        autoSelected: "pan",
       },
       plotOptions: {
         bar: {
@@ -110,19 +107,6 @@ export default function BarChart() {
           "2012-06-01",
           "2012-07-01",
           "2012-08-01",
-          "2012-09-01",
-          "2012-10-01",
-          "2012-11-01",
-          "2012-12-01",
-          "2013-01-01",
-          "2013-02-01",
-          "2013-03-01",
-          "2013-04-01",
-          "2013-05-01",
-          "2013-06-01",
-          "2013-07-01",
-          "2013-08-01",
-          "2013-09-01",
         ],
         labels: {
           rotate: -90,
@@ -131,13 +115,11 @@ export default function BarChart() {
     },
   });
   return (
-    <div >
+    <div className="w-full h-full ">
       <ReactApexChart
         options={state.options}
         series={state.series}
         type="bar"
-        height={365}
-        width={778}
       />
     </div>
   );

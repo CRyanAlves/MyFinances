@@ -3,6 +3,7 @@ import InfoWidget from "./components/ui/InfoWidget";
 import WidgetWrapper from "./components/ui/WidgetWrapper";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import BarChart from "./components/ui/BarChart";
+import DonutChart from "./components/ui/DonutChart";
 
 function App() {
   const [hidden, setHidden] = useState(false);
@@ -27,7 +28,7 @@ function App() {
             {hidden ? <LuEyeOff size={24} /> : <LuEye size={24} />}
           </button>
         </WidgetWrapper>
-        <WidgetWrapper hug>
+        <WidgetWrapper>
           <div className="flex flex-col m-0 p-0 gap-0">
             <h1 className="text-base">Proventos</h1>
             <div className="flex py-[10px] ">
@@ -44,15 +45,18 @@ function App() {
           </div>
         </WidgetWrapper>
       </div>
-      <div className="flex items-center w-full gap-2">
+      <div className="lg:flex items-center w-full gap-2">
         <WidgetWrapper>
-          <div className="flex flex-col items-center w-full m-0 p-0 gap-[10px] ">
+          <div className="flex flex-col items-center w-full m-0 p-0 gap-[10px] h-full  ">
             <h1 className="text-xl">Evolução Patrimonial</h1>
             <BarChart />
           </div>
         </WidgetWrapper>
         <WidgetWrapper>
-          <h1 className="w-[380px]">Minha Carteira</h1>
+          <div className="flex flex-col  w-full m-0 p-0 gap-[10px] ">
+            <h1 className="w-full text-xl">Minha Carteira</h1>
+            <DonutChart />
+          </div>
         </WidgetWrapper>
       </div>
     </div>
