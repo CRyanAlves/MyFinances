@@ -4,6 +4,7 @@ import WidgetWrapper from "./components/ui/WidgetWrapper";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import BarChart from "./components/ui/BarChart";
 import DonutChart from "./components/ui/DonutChart";
+import AreaCharts from "./components/ui/AreaCharts";
 
 function App() {
   const [hidden, setHidden] = useState(false);
@@ -49,7 +50,7 @@ function App() {
         <WidgetWrapper>
           <div className="flex flex-col items-center w-full m-0 p-0 gap-[10px] h-full  ">
             <h1 className="text-xl">Evolução Patrimonial</h1>
-            <BarChart />
+            <AreaCharts />
           </div>
         </WidgetWrapper>
         <WidgetWrapper>

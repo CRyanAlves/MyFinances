@@ -13,7 +13,7 @@ function SideBar() {
           <img src={logo} alt="my3_logo" className="bg-cover h-12 w-12" />
         </a>
         <ul className="flex flex-col gap-5">
-          <SideBarItem icon={<LuHome size={30} />} label="Inicio" path="/" />
+          <SideBarItem icon={<LuHome size={30} />} label="Dashboard" path="/" />
           <SideBarItem
             icon={<LuWallet size={30} />}
             label="Minha Carteira"
@@ -21,7 +21,7 @@ function SideBar() {
           />
           <SideBarItem
             icon={<LuComponent size={30} />}
-            label=""
+            label="Ferramentas"
             path="/tools"
           />
         </ul>

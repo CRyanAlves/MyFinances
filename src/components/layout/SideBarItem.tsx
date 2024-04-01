@@ -33,13 +33,15 @@ function SideBarItem({ icon, label, path }: Props) {
         />
         <div
           className={` ${
-            isActive ? "text-green dark:text-greendark" : "text-primary dark:text-white"
+            isActive
+              ? "text-green dark:text-greendark"
+              : "text-primary dark:text-white"
           } rounded-full`}
         >
           {icon}
         </div>
 
-        <span className="hidden group-hover:block absolute w-max left-full">
+        <span className="hidden group-hover:block absolute w-max h-12 left-full text-xl dark:text-white dark:bg-bodydark bg-body rounded-e-lg p-2">
           {label}
         </span>
       </a>
