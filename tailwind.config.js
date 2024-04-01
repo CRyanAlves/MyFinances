@@ -14,6 +14,8 @@ export default {
         bodydark: "#1E1E1E",
         bg: "#F6F6F7",
         darkbg: "#121212",
+        titlewhite: "#737373",
+        titleblack: "#c4c4c4"
       },
     },
   },

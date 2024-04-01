@@ -3,9 +3,9 @@ import SideBar from "./components/layout/SideBar";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="h-screen w-screen flex bg-bg dark:bg-darkbg">
+    <div className="h-screen w-screen flex bg-bg dark:bg-darkbg ">
       <SideBar />
-      <main className="w-full text-3xl flex flex-col p-[10px] text-primary dark:text-white font-semibold">
+      <main className="w-full text-3xl flex flex-col p-[10px] text-primary dark:text-white font-semibold overflow-auto">
         <Header />
         {children}
       </main>
