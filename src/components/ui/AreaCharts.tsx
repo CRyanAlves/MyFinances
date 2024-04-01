@@ -1,7 +1,6 @@
 import {
   AreaChart,
   Area,
-  CartesianGrid,
   Tooltip,
   XAxis,
   YAxis,
@@ -41,6 +40,27 @@ const AreaCharts = () => {
       amt: 2500,
     },
   ];
+
+  const CustomizedAxisTick = (props) => {
+    const { x, y, payload } = props;
+
+    return (
+      <g transform={`translate(${x},${y})`}>
+        <text
+          x={0}
+          y={0}
+          dy={16}
+          textAnchor="end"
+          fill="#666"
+          fontSize={20}
+          transform="rotate(-35)"
+        >
+          {payload.value}
+        </text>
+      </g>
+    );
+  };
+
   return (
     <ResponsiveContainer width="100%" height="75%">
       <AreaChart data={data} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
@@ -54,7 +74,7 @@ const AreaCharts = () => {
             <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
           </linearGradient>
         </defs>
-        <XAxis dataKey="name" />
+        <XAxis dataKey="name" tick={<CustomizedAxisTick />} />
         <YAxis />
 
         <Tooltip />
